@@ -9,6 +9,7 @@ defmodule HelloWorld do
     children = [
       # Define workers and child supervisors to be supervised
       # worker(HelloWorld.Worker, [arg1, arg2, arg3]),
+      worker(HelloWorld.Printer, [[], [name: :printer]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -16,4 +17,5 @@ defmodule HelloWorld do
     opts = [strategy: :one_for_one, name: HelloWorld.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
 end
